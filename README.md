@@ -1,4 +1,4 @@
-# knowyourweather
+# caricuaca
 
 A web app to show the current weather all around the world. Design is not mine.
 
