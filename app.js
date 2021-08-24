@@ -20,6 +20,45 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 app.get("/", function (req, res) {
+  if (cityList.length !== 0) {
+    for (let index in cityList) {
+      const query = cityList[index].cityName;
+      const apiKey = config.MY_API_KEY;
+      const units = "metric";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=${units}`;
+
+      https.get(url, function (apiRes) {
+        if (apiRes.statusCode === 404 || apiRes.statusCode === 400) {
+          res.redirect("/page-not-found");
+        } else {
+          apiRes.on("data", function (data) {
+            const weatherData = JSON.parse(data);
+            const temp = weatherData.main.temp;
+            const icon = weatherData.weather[0].icon;
+            const countryID = weatherData.sys.country;
+            const description = weatherData.weather[0].description;
+            const imageURL =
+              "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+
+            let weatherObject = {
+              cityName: weatherData.name,
+              temp: temp,
+              icon: imageURL,
+              description: description,
+              countryID: countryID,
+            };
+
+            cityList[index] = weatherObject;
+          });
+        }
+      });
+    }
+    res.render("weather", {
+      cityList: cityList,
+      message: message,
+    });
+    message = "";
+  }
   res.render("weather", { cityList: cityList, message: "" });
 });
 
@@ -80,6 +119,6 @@ app.post("/", function (req, res) {
   });
 });
 
-app.post("/page-not-found", function(req, res) {
+app.post("/page-not-found", function (req, res) {
   res.redirect("/");
 });
