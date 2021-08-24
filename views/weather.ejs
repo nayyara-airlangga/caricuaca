@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Know Your Weather</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="shortcut icon" href="images/cloudy.png" type="image/x-icon">
+  </head>
+  <body>
+    <section class="form-section">
+      <div class="container">
+          <img class="form-img" src="images/cloudy.png" alt="cloudy-img">
+        <h1>Know Your Weather</h1>
+        <form action="/" method="POST">
+          <input
+            id="cityInput"
+            type="text"
+            name="cityName"
+            placeholder="Enter city name"
+          />
+          <button type="submit">Get Data</button>
+          <span class="message"></span>
+        </form>
+        <p><%= message %> </p>
+      </div>
+    </section>
+    <section class="card-section">
+      <div class="container">
+        <ul class="cities">
+            <% for (let index in cityList) { %> 
+          <li class="city">
+            <h2 class="city-name" name="cityName">
+              <span><%= cityList[index].cityName %></span>
+              <sup><%= cityList[index].countryID %></sup>
+            </h2>
+            <span class="city-temp"><%= cityList[index].temp %><sup>°C</sup></span>
+            <figure>
+              <img class="weather-icon" src=<%= cityList[index].icon %> alt="weather-img" />
+              <figcaption><%= cityList[index].description %></figcaption>
+            </figure>
+          </li>
+          <% } %> 
+        </ul>
+      </div>
+    </section>
+  </body>
+</html>

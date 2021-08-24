@@ -1,0 +1,181 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #01015f;
+}
+
+/* Form Section */
+
+.container {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.form-img {
+  margin-top: 50px;
+  width: 12rem;
+}
+
+h1 {
+  color: #fff;
+  font-size: 3.5rem;
+}
+
+p {
+  color: #fff;
+  font-size: 18px;
+}
+
+button {
+  margin-left: 10px;
+  margin-top: 10px;
+  background-color: #ff3131;
+  border-style: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 15px 15px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #c02323;
+}
+
+input {
+  margin-right: 10px;
+  background-color: transparent;
+  font-size: 2rem;
+  height: 40px;
+  padding: 5px 5px 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid;
+  border-color: #fff;
+  color: #fff;
+}
+
+input:focus {
+  outline: none;
+  border-color: #d1d1d1;
+}
+
+input::placeholder {
+  color: #cfcccc;
+}
+
+/* Card Section */
+
+ul {
+  padding-inline-start: 20px;
+  margin: auto;
+  list-style: none;
+}
+
+.card-section {
+  margin: auto;
+  width: 100%;
+  margin: 50px 0 20px;
+}
+
+.cities {
+  display: grid;
+  gap: 42px 20px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.city {
+  width: 180px;
+  text-align: left;
+  padding: 10px 10%;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #a5a4a4;
+}
+
+.city::after {
+  content: "";
+  width: 90%;
+  height: 50px;
+  z-index: -1;
+  opacity: 0.3;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.city-temp {
+  color: #000;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.city sup {
+  font-size: 0.8rem;
+}
+
+.city-temp sup {
+  font-size: 2rem;
+}
+
+.city-name sup {
+  padding: 0.2em 0.6em;
+  border-radius: 30px;
+  color: #fff;
+  background: #ffa500;
+}
+
+.city-name {
+  font-weight: 400;
+}
+
+.weather-icon {
+  width: 100px;
+  height: 100px;
+}
+
+figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+figcaption {
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media screen and (max-width: 1200px) {
+  .cities {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 1000px) {
+  .cities {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .form-section {
+    width: 90%;
+    margin: auto;
+  }
+  input,
+  button {
+    margin-right: 0;
+    margin-left: 0;
+    width: 80%;
+  }
+
+  .cities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cities {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
